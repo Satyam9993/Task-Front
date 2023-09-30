@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import user from './store/User';
 import tasks from './store/Tasks';
-import reportWebVitals from './reportWebVitals';
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import {
@@ -20,13 +19,15 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 
-const persistConfig = { key: "root", storage, version: 1 };
-const persistedReducer1 = persistReducer(persistConfig, user);
-const persistedReducer2 = persistReducer(persistConfig, tasks);
+const persistConfigUser = { key: "user", storage, version: 1 };
+const persistConfigTasks = { key: "tasks", storage, version: 1 };
+
+const persistedReducerUser = persistReducer(persistConfigUser, user);
+const persistedReducerTasks = persistReducer(persistConfigTasks, tasks);
 const store = configureStore({
   reducer: {
-    user: persistedReducer1,
-    tasks : persistedReducer2
+    user: persistedReducerUser,
+    tasks : persistedReducerTasks
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -46,4 +47,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-reportWebVitals();

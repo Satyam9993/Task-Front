@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setLogin } from "../store/User";
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -18,7 +16,6 @@ const RegisterSchema = Yup.object().shape({
 });
 
 const Signin = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [loginData, setLoginData] = useState({ firstName: '', lastName: '', email: '', password: '' });
@@ -69,133 +66,133 @@ const Signin = () => {
                     <p>Enter your information to register</p>
                   </div>
                   <Formik
-                      initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
-                      validationSchema={RegisterSchema}
-                      onSubmit={(values) => {
-                        handleSignIn(values);
-                      }}
-                    >
-                      {({
-                        values,
-                        errors,
-                        touched,
-                        handleChange,
-                        handleSubmit
-                      }) => (
-                        <div>
-                          <div className="flex -mx-3">
-                            <div className="w-1/2 px-3 mb-5">
-                              <label className="text-xs font-semibold px-1">First name</label>
-                              <div className="flex">
-                                <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                                  {/* icon */}
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                  </svg>
-                                </div>
-                                <input
-                                  type="text"
-                                  className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                                  onChange={handleChange('firstName')}
-                                  value={values.firstName}
-                                  placeholder="John"
-                                />
+                    initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
+                    validationSchema={RegisterSchema}
+                    onSubmit={(values) => {
+                      handleSignIn(values);
+                    }}
+                  >
+                    {({
+                      values,
+                      errors,
+                      touched,
+                      handleChange,
+                      handleSubmit
+                    }) => (
+                      <div>
+                        <div className="flex -mx-3">
+                          <div className="w-1/2 px-3 mb-5">
+                            <label className="text-xs font-semibold px-1">First name</label>
+                            <div className="flex">
+                              <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                {/* icon */}
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                </svg>
                               </div>
-                              {touched.firstName && errors.firstName && (
-                                <p className="text-[#ff0d10]">
-                                  {errors.firstName}
-                                </p>
-                              )}
+                              <input
+                                type="text"
+                                className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                onChange={handleChange('firstName')}
+                                value={values.firstName}
+                                placeholder="John"
+                              />
                             </div>
-                            <div className="w-1/2 px-3 mb-5">
-                              <label className="text-xs font-semibold px-1">Last name</label>
-                              <div className="flex">
-                                <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                                  {/* icon */}
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                  </svg>
-                                </div>
-                                <input
-                                  type="text"
-                                  className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                                  onChange={handleChange('lastName')}
-                                  value={values.lastName}
-                                  placeholder="Smith"
-                                />
-                              </div>
-                              {touched.lastName && errors.lastName && (
-                                <p className="text-[#ff0d10]">
-                                  {errors.lastName}
-                                </p>
-                              )}
-                            </div>
+                            {touched.firstName && errors.firstName && (
+                              <p className="text-[#ff0d10]">
+                                {errors.firstName}
+                              </p>
+                            )}
                           </div>
-                          <div className="flex -mx-3">
-                            <div className="w-full px-3 mb-5">
-                              <label className="text-xs font-semibold px-1">Email</label>
-                              <div className="flex">
-                                <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                                  {/* icon */}
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
-                                  </svg>
-                                </div>
-                                <input
-                                  type="email"
-                                  className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                                  placeholder="johnsmith@example.com"
-                                  onChange={handleChange('email')}
-                                  value={values.email}
-                                />
+                          <div className="w-1/2 px-3 mb-5">
+                            <label className="text-xs font-semibold px-1">Last name</label>
+                            <div className="flex">
+                              <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                {/* icon */}
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                </svg>
                               </div>
-                              {touched.email && errors.email && (
-                                <p className="text-[#ff0d10]">
-                                  {errors.email}
-                                </p>
-                              )}
+                              <input
+                                type="text"
+                                className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                onChange={handleChange('lastName')}
+                                value={values.lastName}
+                                placeholder="Smith"
+                              />
                             </div>
-                          </div>
-                          <div className="flex -mx-3">
-                            <div className="w-full px-3 mb-12">
-                              <label className="text-xs font-semibold px-1">Password</label>
-                              <div className="flex">
-                                <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                                  {/* icon */}
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                                  </svg>
-                                </div>
-                                <input
-                                  type="password"
-                                  className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                                  onChange={handleChange('password')}
-                                  value={values.password}
-                                  placeholder="************"
-                                />
-                              </div>
-                              {touched.password && errors.password && (
-                                <p className="text-[#ff0d10]">
-                                  {errors.password}
-                                </p>
-                              )}
-                            </div>
-                          </div>
-                          <div className="flex -mx-3">
-                            <div className="w-full px-3 mb-5">
-                              <button
-                                className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
-                                onClick={() => {
-                                  handleSubmit()
-                                }}
-                              >
-                                REGISTER NOW
-                              </button>
-                            </div>
+                            {touched.lastName && errors.lastName && (
+                              <p className="text-[#ff0d10]">
+                                {errors.lastName}
+                              </p>
+                            )}
                           </div>
                         </div>
-                      )}
-                    </Formik>
+                        <div className="flex -mx-3">
+                          <div className="w-full px-3 mb-5">
+                            <label className="text-xs font-semibold px-1">Email</label>
+                            <div className="flex">
+                              <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                {/* icon */}
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                  <path strokeLinecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                                </svg>
+                              </div>
+                              <input
+                                type="email"
+                                className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                placeholder="johnsmith@example.com"
+                                onChange={handleChange('email')}
+                                value={values.email}
+                              />
+                            </div>
+                            {touched.email && errors.email && (
+                              <p className="text-[#ff0d10]">
+                                {errors.email}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex -mx-3">
+                          <div className="w-full px-3 mb-12">
+                            <label className="text-xs font-semibold px-1">Password</label>
+                            <div className="flex">
+                              <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                {/* icon */}
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                                </svg>
+                              </div>
+                              <input
+                                type="password"
+                                className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                onChange={handleChange('password')}
+                                value={values.password}
+                                placeholder="************"
+                              />
+                            </div>
+                            {touched.password && errors.password && (
+                              <p className="text-[#ff0d10]">
+                                {errors.password}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex -mx-3">
+                          <div className="w-full px-3 mb-5">
+                            <button
+                              className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+                              onClick={() => {
+                                handleSubmit()
+                              }}
+                            >
+                              REGISTER NOW
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </Formik>
 
                 </div>
               </div>

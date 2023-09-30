@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Login = () => {
-    console.log(BACKEND_URL);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const RegisterSchema = Yup.object().shape({
