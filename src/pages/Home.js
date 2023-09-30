@@ -4,17 +4,20 @@ import Navbar from '../components/Navbar';
 import TaskList from '../components/TaskList';
 import { setTasks } from '../store/Tasks';
 import CreateTask from '../components/CreateTask';
+import { useNavigate } from 'react-router-dom';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Home = () => {
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
 
   useEffect(() => {
-    // Fetch All tasks
-    fetchTasks() 
-  }, [])
+    // eslint-disable-next-line
+    if(!token){
+      navigate("/login");
+    }
+  })
 
   // fetching all tasks
   const fetchTasks = async () => {
@@ -29,7 +32,10 @@ const Home = () => {
     }));
   }
 
-  
+  useEffect(() => {
+    // eslint-disable-next-line
+    fetchTasks() 
+  })
 
   return (
     <div>

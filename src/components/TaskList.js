@@ -12,7 +12,7 @@ const TaskList = () => {
 
     return (
         <div className='container m-auto p-5'>
-            {TaskList.map(task => (
+            {TaskList?.map(task => (
                 <Taskcard task={task} key={task._id}/>
             ))}
         </div>

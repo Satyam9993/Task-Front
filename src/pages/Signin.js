@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -189,6 +189,10 @@ const Signin = () => {
                               REGISTER NOW
                             </button>
                           </div>
+                        </div>
+                        <div className="font-semibold">
+                          Already Have an Account?
+                          <Link to="/login" className="text-blue-700"> Login</Link>
                         </div>
                       </div>
                     )}

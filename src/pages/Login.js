@@ -3,7 +3,7 @@ import React from 'react'
 import * as Yup from 'yup';
 import { setLogin } from '../store/User';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Login = () => {
@@ -118,6 +118,10 @@ const Login = () => {
                   </button>
                 </div>
               </div>
+                <div className='text-gray-100 text-center'>
+                  Not Have an Account? 
+                  <Link to="/signin" className='text-blue-600'> Register</Link>
+                </div>
             </div>
           )}
         </Formik>
