@@ -161,7 +161,7 @@ function CreateTask() {
                                                                             handleSubmit()
                                                                         }}
                                                                     >
-                                                                        REGISTER NOW
+                                                                        Add Task
                                                                     </button>
                                                                 </div>
                                                                 <div className="w-full px-3 mb-5">

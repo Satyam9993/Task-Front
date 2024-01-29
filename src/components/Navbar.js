@@ -22,7 +22,7 @@ const Navbar = () => {
                         <span className="ml-3 text-xl">Task Management</span>
                     </Link>
                     <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                        <p className="mr-5 hover:text-gray-900">{userName}</p>
+                        <p className="mr-5 font-bold text-gray-900 hover:text-gray-900">{userName}</p>
                     </nav>
                     {token ? 
                     <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" onClick={()=>logout()}>Logout
